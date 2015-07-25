@@ -1,0 +1,6 @@
+[submodule "third/crown-bx"]
+	path = _3rdparty/bx
+	url = https://github.com/taylor001/bx.git
+[submodule "third/bgfx"]
+	path = _3rdparty/bgfx
+	url = https://github.com/taylor001/bgfx.git
