@@ -76,7 +76,9 @@ function monster_project(_name, _kind, _defines)
 
 		files {
 			MONSTER_DIR .. "_engine/**.h",
-			MONSTER_DIR .. "_engine/**.cpp"
+			MONSTER_DIR .. "_engine/**.cpp",
+			MONSTER_DIR .. "_engine/*/**.h",
+			MONSTER_DIR .. "_engine/*/**.cpp"
 		}
 
 		strip()
