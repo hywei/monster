@@ -50,9 +50,26 @@ static const uint16_t s_cubeIndices[36] =
 	6, 3, 7,
 };
 
-class Cubes : public entry::AppI
+struct Args
 {
-	void init(int _argc, char** _argv) BX_OVERRIDE
+	Args(int _argc, char** _argv);
+
+	bgfx::RendererType::Enum m_type;
+	uint16_t m_pciId;
+};
+
+class Cubes 
+{
+	uint32_t m_width;
+	uint32_t m_height;
+	uint32_t m_debug;
+	uint32_t m_reset;
+	bgfx::VertexBufferHandle m_vbh;
+	bgfx::IndexBufferHandle m_ibh;
+	bgfx::ProgramHandle m_program;
+	int64_t m_timeOffset;
+
+	void init(int _argc, char** _argv) 
 	{
 		Args args(_argc, _argv);
 
@@ -61,7 +78,7 @@ class Cubes : public entry::AppI
 		m_debug = BGFX_DEBUG_TEXT;
 		m_reset = BGFX_RESET_VSYNC;
 
-		bgfx::init(args.m_type, args.m_pciId);
+		bgfx::init(args.m_type);
 		bgfx::reset(m_width, m_height, m_reset);
 
 		// Enable debug text.
@@ -97,7 +114,7 @@ class Cubes : public entry::AppI
 		m_timeOffset = bx::getHPCounter();
 	}
 
-	virtual int shutdown() BX_OVERRIDE
+	virtual int shutdown()
 	{
 		// Cleanup.
 		bgfx::destroyIndexBuffer(m_ibh);
@@ -110,7 +127,7 @@ class Cubes : public entry::AppI
 		return 0;
 	}
 
-	bool update() BX_OVERRIDE
+	bool update()
 	{
 		if (!entry::processEvents(m_width, m_height, m_debug, m_reset))
 		{
@@ -203,14 +220,7 @@ class Cubes : public entry::AppI
 		return false;
 	}
 
-	uint32_t m_width;
-	uint32_t m_height;
-	uint32_t m_debug;
-	uint32_t m_reset;
-	bgfx::VertexBufferHandle m_vbh;
-	bgfx::IndexBufferHandle m_ibh;
-	bgfx::ProgramHandle m_program;
-	int64_t m_timeOffset;
+
 };
 
 ENTRY_IMPLEMENT_MAIN(Cubes);
