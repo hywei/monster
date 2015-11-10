@@ -26,9 +26,13 @@ GENIE_FILE= _genie/genie.lua
 
 all:
 	$(GENIE) --file=$(GENIE_FILE) vs2013
+	$(GENIE) --file=$(GENIE_FILE) vs2015
 
 .build/projects/vs2013:
 	$(GENIE) --file=$(GENIE_FILE) vs2013
+
+.build/projects/vs2015:
+	$(GENIE) --file=$(GENIE_FILE) vs2015
 
 rebuild-shaders:
 	$(MAKE) -R -C examples rebuild

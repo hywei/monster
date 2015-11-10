@@ -27,7 +27,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <alloca.h>
+
+#if defined(_MSC_VER) || defined(__MINGW32__)
+#include <malloc.h>     // alloca
+#else
+#include <alloca.h>     // alloca
+#endif
 
 namespace bgfx
 {

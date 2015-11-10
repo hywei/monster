@@ -7,12 +7,16 @@
 #define BX_STRING_H_HEADER_GUARD
 
 #include "bx.h"
-#include <alloca.h>
 #include <ctype.h>  // tolower
 #include <stdarg.h> // va_list
 #include <stdio.h>  // vsnprintf, vsnwprintf
 #include <string.h>
 #include <wchar.h>  // wchar_t
+#if defined(_MSC_VER) || defined(__MINGW32__)
+#include <malloc.h>     // alloca
+#else
+#include <alloca.h>     // alloca
+#endif
 
 namespace bx
 {

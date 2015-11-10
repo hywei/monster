@@ -6,13 +6,8 @@ function monster_project(_name, _kind, _defines)
 
 		includedirs {
 			MONSTER_DIR .. "_engine",
-			MONSTER_DIR .. "_engine/core",
-			MONSTER_DIR .. "_engine/common",
-			MONSTER_DIR .. "_engine/render",
-			MONSTER_DIR .. "_engine/physics",
-			MONSTER_DIR .. "_engine/animation",
-			MONSTER_THIRD_DIR .. "_3rdparty/bgfx/include",
-			MONSTER_THIRD_DIR .. "_3rdparty/bx/include",
+			MONSTER_THIRD_DIR .. "bgfx/include",
+			MONSTER_THIRD_DIR .. "bx/include",
 		}
 
 		defines {

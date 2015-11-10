@@ -14,8 +14,8 @@ namespace monster
 	class File
 	{
 	public:
-		explicit File(FileOpenMode mode, bool async = false);
-		virtual ~File();
+		explicit File(FileOpenMode mode, bool async = false) {}
+		virtual ~File() {}
 
 		virtual size_t read(void* buffer, size_t length) = 0;
 		virtual size_t write(const void* buffer, size_t length) = 0;

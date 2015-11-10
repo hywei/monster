@@ -1,7 +1,7 @@
 #ifndef __MONSTER_LINEAR_ALLOCATOR_H__
 #define __MONSTER_LINEAR_ALLOCATOR_H__
 
-#include <casset>
+#include <cassert>
 #include <cstdlib>
 
 #include "core/memory/allocator.h"
@@ -15,7 +15,7 @@ namespace monster
 		uintptr_t _buffer;
 		size_t _buffer_size;
 
-		size_t _last_last_allocated_offset;
+		size_t _last_allocated_offset;
 		size_t _last_allocated_size;
 
 	protected:
@@ -24,7 +24,7 @@ namespace monster
 
 	public:
 		LinearAllocator();
-		virtual LinearAllocator();
+		virtual ~LinearAllocator();
 
 		void initialize(void* buffer, size_t buffer_size);
 		void release();
@@ -47,7 +47,7 @@ namespace monster
 			return;
 		}
 
-		_buffer = reinterpret<uintptr_t> buffer;
+		_buffer = reinterpret_cast<uintptr_t>(buffer);
 		_buffer_size = buffer_size;
 
 		_last_allocated_offset = 0;
@@ -80,7 +80,7 @@ namespace monster
 		}
 
 		uintptr_t curr_buf_head = _buffer + _last_allocated_offset + _last_allocated_size;
-		uintptr_t curr_allocated_head = alignTo(curr_buf_head, align);
+		uintptr_t curr_allocated_head;// = alignTo(curr_buf_head, align);
 
 		if (curr_allocated_head < curr_buf_head)
 		{

@@ -1,7 +1,7 @@
 #ifndef __MONSTER_FILESYSTEM_H__
 #define __MONSTER_FILESYSTEM_H__
 
-#include "core/file.h"
+#include "core/filesystem/file.h"
 
 namespace monster
 {
@@ -12,8 +12,8 @@ namespace monster
 		FileSystem& operator = (const FileSystem&) = delete;
 
 	public:
-		FileSystem();
-		virtual ~FileSystem();
+		FileSystem() {}
+		virtual ~FileSystem() {}
 
 		virtual File* open(const char* path, FileOpenMode mode) = 0;
 		virtual void close(File* file) = 0;

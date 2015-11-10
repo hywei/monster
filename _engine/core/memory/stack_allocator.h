@@ -1,5 +1,5 @@
-#ifndef __MONSTER_LINEAR_ALLOCATOR_H__
-#define __MONSTER_LINEAR_ALLOCATOR_H__
+#ifndef __MONSTER_STACK_ALLOCATOR_H__
+#define __MONSTER_STACK_ALLOCATOR_H__
 
 #include "core/memory/allocator.h"
 
