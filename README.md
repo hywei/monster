@@ -21,7 +21,10 @@ It will have be these features:
 
 ##Building
 
-.\_3rdparty\bx\tools\bin\windows\genie --file=.\_genie\genie.lua vs2013
+Windows
+-------
+
+_3rdparty\bx\tools\bin\windows\genie --file=.\_genie\genie.lua vs2013
 
 or
 
