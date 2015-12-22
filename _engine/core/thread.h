@@ -92,13 +92,7 @@ namespace monster
 			_stack_size = stack_size;
 			_is_running = true;
 
-
-			_handle = CreateThread(NULL
-				, _stack_size
-				, threadFunc
-				, this
-				, 0
-				, NULL);
+			_handle = CreateThread(nullptr, _stack_size, threadFunc, this, 0, nullptr);
 
 			_sem.wait();
 		}

@@ -12,6 +12,8 @@
 #define ENTRY_IMPLEMENT_EVENT(_class, _type) \
 			_class(WindowHandle _handle) : Event(_type, _handle) {}
 
+extern "C" int _main_(int _argc, char** _argv);
+
 namespace monster
 {
 	class FrameWork
@@ -231,6 +233,8 @@ namespace monster
 		static void setMouseLock(WindowHandle handle, bool is_lock);
 
 		static bool processWindowEvents(WindowState& state, uint32_t& debug, uint32_t& reset);
+
+		static int entry(int argc, char** argv);
 	};
 }
 

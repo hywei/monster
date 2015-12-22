@@ -233,18 +233,18 @@ namespace monster
 			RegisterClassExA(&wnd);
 
 			_window_alloc.alloc();
-			_hwnd[0] = CreateWindowA("bgfx"
-				, "BGFX"
-				, WS_OVERLAPPEDWINDOW | WS_VISIBLE
-				, 0
-				, 0
-				, k_window_default_width
-				, k_window_default_height
-				, NULL
-				, NULL
-				, instance
-				, 0
-				);
+			_hwnd[0] = CreateWindowA(
+				"bgfx", 
+				"BGFX", 
+				WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
+				0, 
+				0, 
+				k_window_default_width, 
+				k_window_default_height, 
+				NULL, 
+				NULL, 
+				instance, 
+				0);
 
 			_flags[0] = 0 | ENTRY_WINDOW_FLAG_ASPECT_RATIO | ENTRY_WINDOW_FLAG_FRAME;
 
@@ -271,7 +271,7 @@ namespace monster
 			MSG msg;
 			msg.message = WM_NULL;
 
-			while (!_is_exit)
+			while (_is_exit == false)
 			{
 				WaitForInputIdle(GetCurrentProcess(), 16);
 
@@ -844,7 +844,7 @@ namespace monster
 	int32_t MainThreadEntry::threadFunc(void* _userData)
 	{
 		MainThreadEntry* self = (MainThreadEntry*)_userData;
-		int32_t result = main(self->_argc, self->_argv);
+		int32_t result = FrameWork::entry(self->_argc, self->_argv);
 		PostMessage(s_ctx._hwnd[0], WM_QUIT, 0, 0);
 		return result;
 	}

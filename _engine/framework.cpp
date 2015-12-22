@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "bgfx.h"
 
+extern "C" int _main_(int _argc, char** _argv);
+
 namespace monster
 {
 	const uint8_t FrameWork::k_max_window_count = 8;
@@ -230,4 +232,22 @@ namespace monster
 
 		return s_exit;
 	}
+
+	int FrameWork::entry(int _argc, char** _argv)
+	{
+		//DBG(BX_COMPILER_NAME " / " BX_CPU_NAME " / " BX_ARCH_NAME " / " BX_PLATFORM_NAME);
+
+		inputInit();
+
+		FrameWork::WindowHandle defaultWindow = { 0 };
+		FrameWork::setWindowTitle(defaultWindow, "test");
+
+		int result = ::_main_(_argc, _argv);
+
+		inputRemoveBindings("bindings");
+		inputShutdown();
+
+		return result;
+	}
+
 }
